@@ -9,7 +9,8 @@
   },
   "authors": [
     {
-      "name": "David Lamberson"
+      "name": "David Lamberson",
+      "url": "https://github.com/lambersond"
     }
   ],
   "esmodules": [
@@ -25,5 +26,10 @@
       "path": "lang/en.json"
     }
   ],
-  "socket": false
+  "socket": false,
+  "url": "https://github.com/lambersond/fvtt-manual-dice",
+  "readme": "https://github.com/lambersond/fvtt-manual-dice#readme",
+  "bugs": "https://github.com/lambersond/fvtt-manual-dice/issues",
+  "manifest": "https://github.com/lambersond/fvtt-manual-dice/releases/latest/download/module.json",
+  "download": "https://github.com/lambersond/fvtt-manual-dice/releases/latest/download/module.zip"
 }

@@ -73,12 +73,37 @@ for them and refreshes their controls.
 
 ## Installation
 
+In Foundry (or on The Forge), install by manifest URL:
+
+```
+https://github.com/lambersond/fvtt-manual-dice/releases/latest/download/module.json
+```
+
+Note that this is a **release asset** URL, not a link to `module.json` in the repository. A
+`github.com/.../blob/...` link returns an HTML page rather than JSON, and a
+`raw.githubusercontent.com` link returns a manifest with no release archive behind it; neither
+can be installed from.
+
+### Local development
+
 Clone or symlink the repository into your Foundry data directory as `manual-dice` — the folder
 name must match the manifest `id`:
 
 ```sh
 ln -s "$PWD" "$HOME/Library/Application Support/FoundryVTT/Data/modules/manual-dice"
 ```
+
+### Cutting a release
+
+Pushing a `v*` tag builds the archive and publishes the release via
+[`.github/workflows/release.yml`](.github/workflows/release.yml):
+
+```sh
+git tag v1.0.0 && git push origin v1.0.0
+```
+
+The tag is the source of truth for the version: the workflow stamps `version`, `manifest` and
+`download` into the released `module.json`, so those fields do not need to be edited by hand.
 
 ## Layout
 

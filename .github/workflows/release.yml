@@ -1,0 +1,55 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # The tag is the source of truth for the released version. The manifest is stamped from it
+      # so a forgotten version bump in module.json cannot produce a mislabelled release.
+      - name: Stamp the manifest
+        env:
+          REPO: ${{ github.repository }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          jq --arg version "${TAG#v}" \
+             --arg manifest "https://github.com/$REPO/releases/latest/download/module.json" \
+             --arg download "https://github.com/$REPO/releases/download/$TAG/module.zip" \
+             '.version = $version | .manifest = $manifest | .download = $download' \
+             module.json > module.stamped.json
+          mv module.stamped.json module.json
+          cat module.json
+
+      - name: Build the archive
+        run: |
+          set -euo pipefail
+          zip -r module.zip \
+            module.json \
+            scripts \
+            styles \
+            templates \
+            lang \
+            README.md \
+            -x '*.DS_Store'
+          unzip -l module.zip
+
+      # module.json is published as a loose asset so that the manifest URL above resolves.
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          gh release create "$TAG" module.json module.zip \
+            --title "$TAG" \
+            --generate-notes

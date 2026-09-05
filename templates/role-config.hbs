@@ -1,0 +1,15 @@
+<p class="hint">{{localize "MANUALDICE.RoleConfig.Hint"}}</p>
+
+<fieldset class="manual-dice-roles">
+    <legend>{{localize "MANUALDICE.RoleConfig.Legend"}}</legend>
+    {{#each roles as |role|}}
+    <div class="form-group">
+        <label class="checkbox">
+            <input type="checkbox" name="{{role.field}}"
+                   {{#if role.value}}checked{{/if}}
+                   {{#if role.locked}}disabled{{/if}}>
+            {{localize role.label}}
+        </label>
+    </div>
+    {{/each}}
+</fieldset>

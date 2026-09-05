@@ -1,0 +1,29 @@
+{
+  "id": "manual-dice",
+  "title": "Manual Dice",
+  "description": "Let players roll physical dice and type the results into Foundry. The Gamemaster enables the module for the world and chooses which user roles may use it; each permitted user turns manual entry on or off for themselves from a toggle in the Token controls.",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "14",
+    "verified": "14.364"
+  },
+  "authors": [
+    {
+      "name": "David Lamberson"
+    }
+  ],
+  "esmodules": [
+    "scripts/module.mjs"
+  ],
+  "styles": [
+    "styles/manual-dice.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "socket": false
+}

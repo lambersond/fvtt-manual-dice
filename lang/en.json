@@ -1,0 +1,26 @@
+{
+  "MANUALDICE": {
+    "Control": {
+      "Title": "Enter Dice Results Manually"
+    },
+    "Settings": {
+      "Enabled": {
+        "Name": "Enable Manual Dice",
+        "Hint": "Allow permitted users to roll physical dice and type the results into Foundry. While this is off, the Token controls toggle is hidden for everyone."
+      },
+      "Roles": {
+        "Name": "Permitted Roles",
+        "Label": "Configure Roles",
+        "Hint": "Choose which user roles may enter dice results manually. This sets Foundry's \"Make Manual Rolls\" permission."
+      }
+    },
+    "RoleConfig": {
+      "Title": "Manual Dice: Permitted Roles",
+      "Legend": "Make Manual Rolls",
+      "Hint": "Users with a selected role may switch manual dice entry on for themselves from the Token controls. This is Foundry's \"Make Manual Rolls\" permission, so changing it here also changes it in Configure Permissions.",
+      "Reset": "Restore Defaults",
+      "Submit": "Save Changes",
+      "Saved": "Manual dice role permissions updated."
+    }
+  }
+}

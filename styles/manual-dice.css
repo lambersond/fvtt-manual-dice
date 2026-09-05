@@ -1,0 +1,22 @@
+/*
+ * The Token controls toggle needs no styling of its own: core already styles
+ * button.ui-control[aria-pressed=true].toggle, which is what the tool renders as.
+ */
+
+#manual-dice-role-config .manual-dice-roles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+#manual-dice-role-config .manual-dice-roles .form-group {
+  margin: 0;
+  padding: 0;
+}
+
+#manual-dice-role-config .manual-dice-roles label.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: normal;
+}

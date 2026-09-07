@@ -79,10 +79,15 @@ In Foundry (or on The Forge), install by manifest URL:
 https://github.com/lambersond/fvtt-manual-dice/releases/latest/download/module.json
 ```
 
-Note that this is a **release asset** URL, not a link to `module.json` in the repository. A
-`github.com/.../blob/...` link returns an HTML page rather than JSON, and a
-`raw.githubusercontent.com` link returns a manifest with no release archive behind it; neither
-can be installed from.
+This is a **release asset** URL. Two other forms come up:
+
+- `github.com/.../blob/main/module.json` — **cannot** be installed from. It serves an HTML page
+  rather than JSON.
+- `raw.githubusercontent.com/.../main/module.json` — works, as any stable URL does, provided the
+  manifest it serves carries a `download` pointing at a real archive. Prefer the release asset
+  anyway: the committed `version` is only accurate at the moment of a release, and some
+  remotely-hosted instances cannot reach that host
+  ([foundryvtt#9795](https://github.com/foundryvtt/foundryvtt/issues/9795)).
 
 ### Local development
 
@@ -104,6 +109,8 @@ git tag v1.0.0 && git push origin v1.0.0
 
 The tag is the source of truth for the version: the workflow stamps `version`, `manifest` and
 `download` into the released `module.json`, so those fields do not need to be edited by hand.
+They are therefore stale in the committed copy between releases — check the published manifest,
+not this file, to see what actually shipped.
 
 ## Layout
 

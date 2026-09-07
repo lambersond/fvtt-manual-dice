@@ -33,14 +33,11 @@ jobs:
       - name: Build the archive
         run: |
           set -euo pipefail
-          zip -r module.zip \
-            module.json \
-            scripts \
-            styles \
-            templates \
-            lang \
-            README.md \
-            -x '*.DS_Store'
+          # The whole tree minus VCS and CI, rather than a hand-maintained list: a package that
+          # gains or loses a directory needs no edit here, and zip cannot fail with "nothing to
+          # do" over a path that does not exist. module.json must land at the archive root.
+          zip -r module.zip . \
+            -x '.git/*' '.github/*' '.gitignore' 'module.zip' '*.DS_Store'
           unzip -l module.zip
 
       # module.json is published as a loose asset so that the manifest URL above resolves.
